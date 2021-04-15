@@ -23,17 +23,19 @@ class Form extends Component {
 
     onFormSubmit = (event) => {
         // to prevent page reload on form submit
+        event.preventDefault();
         var data = {name: this.state.name, URL: this.state.URL};
         
         // props.fLStore.push(this.state);
-        alert("Saved " + data.name + ": " + data.URL);
-        this.setState(
-            {
-                name: "", 
-                URL: ""
-            }
-        );
-        event.preventDefault();
+        this.props.onFormSubmit(data);
+        // alert("Saved " + data.name + ": " + data.URL);
+        // this.setState(
+        //     {
+        //         name: "", 
+        //         URL: ""
+        //     }
+        //);
+        
         
         /*
             TODO - Logic for calling props to handle submission and setting state changes
