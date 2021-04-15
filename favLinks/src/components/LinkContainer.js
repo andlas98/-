@@ -5,34 +5,27 @@ import Table from './Table';
 class LinkContainer extends React.Component {
     constructor(props){
         super(props)
-        /* TODO - Create state object for storing favLinks */
-        // TODO completed here:
         this.state ={
-            favLinkStore:[{name: "Test", URL:"test.com"}]
+            favLinkStore:[]
         };
     }
 
     removeCharacter = index => {
-        /*
-            TODO - Create logic for setting the state to filter array and remove favLink at index
-        */
-            this.setState({
-                favLinkStore: this.state.favLinkStore.map((item)=>{
-                    if (item.name === index.name && item.URL === index.URL){
-                        this.state.favLinkStore.splice(this.state.favLinkStore.indexOf(item));
-                    }
-                })
-            })
-        
+        let temp = this.state.favLinkStore
+        temp.splice(index, 1)
+        this.setState({
+            favLinkStore: temp
+        })
     }
 
     handleSubmit = favLink => {
         /*
             TODO - Create logic to setState and add new favLink to favLinks array in state
         */
+       console.log(favLink);
        this.setState(
            {
-               favLinkStore: this.state.favLinkStore.push(favLink)
+               favLinkStore: this.state.favLinkStore.concat([favLink])
             }
         )
     }
@@ -48,7 +41,6 @@ class LinkContainer extends React.Component {
                 <br/>
 
                 <h3>Add New</h3>
-                {/*TODO - Add Form Component */}
                 <Form favlink = {this.state.favLinkStore} onFormSubmit={this.handleSubmit}/>
             </div>
         );

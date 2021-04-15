@@ -7,10 +7,6 @@ class Form extends Component {
             name:"", 
             URL:""
         };
-        /*
-            TODO - set initial state for link name and URL 
-
-        */
     }
 
     handleChange = event => {
@@ -28,26 +24,18 @@ class Form extends Component {
         
         // props.fLStore.push(this.state);
         this.props.onFormSubmit(data);
-        // alert("Saved " + data.name + ": " + data.URL);
-        // this.setState(
-        //     {
-        //         name: "", 
-        //         URL: ""
-        //     }
-        //);
-        
-        
-        /*
-            TODO - Logic for calling props to handle submission and setting state changes
-        */
-        
+        this.setState(
+            {
+                name: "", 
+                URL: ""
+            }
+        );        
     }
 
     render() {
         const data = {name: this.state.name, URL: this.state.URL};
         return(
             <form onSubmit={this.onFormSubmit}>
-                {/* TODO - Logic for returning a form element with labels and inputs for link name and URL */}
                 <label>Website Name:
                     <input type="text" value={this.state.name} onChange={this.handleChange}name="name" />
                 </label>
